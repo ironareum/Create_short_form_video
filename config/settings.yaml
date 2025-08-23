@@ -1,0 +1,52 @@
+# 전역 설정 : 상세설정 TBD
+project:
+out_dir: "output/videos"
+caption_dir: "output/captions"
+max_duration_sec: 58
+target_resolution: [1080, 1920] # width, height (세로)
+fps: 30
+
+
+content:
+default_category: "morning" # morning | bedtime | breathing
+csv_dir: "data/quotes"
+filters:
+min_chars: 30
+max_chars: 300 # TTS 속도에 따라 조정 (다음 단계에서 보정)
+
+
+voice:
+backend: "gtts" # gtts | openai | edge-tts 등 (플러그형)
+lang: "ko"
+speaking_rate: 1.0 # 0.8~1.1 범위 권장
+out_format: "mp3"
+
+
+bgm:
+dir: "assets/bgm"
+target_lufs: -23 # 배경음 음량 목표 (상대값, 추후 보정)
+ducking_db: -10 # 보이스 구간에서 BGM 자동 감쇠량
+
+
+background:
+videos_dir: "assets/videos"
+images_dir: "assets/images"
+pick_mode: "random" # random | by-tag
+
+# 제목/하단 : 아네모네
+# 글 내용 : 기쁨밝음
+overlay:
+font_path: "assets/fonts/NotoSansKR-Regular.otf" #아네모네
+font_size: 60
+margin_px: 96
+text_box_width_ratio: 0.85
+position: "center" # center | bottom | custom(x,y)
+shadow: true
+
+
+export:
+codec: "libx264"
+audio_codec: "aac"
+crf: 18
+preset: "medium"
+audio_bitrate: "192k"
